@@ -1,0 +1,9 @@
+---
+
+# Main tasks file for glusterfs role
+
+- name: 'INIT | Manage variables to use for our target'
+  import_tasks: "{{ role_path }}/tasks/manage_variables.yml"
+  tags:
+    - 'role::glusterfs'
+    - 'role::glusterfs::init'
