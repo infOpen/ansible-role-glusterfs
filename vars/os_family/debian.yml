@@ -1,0 +1,5 @@
+---
+
+_glusterfs_packages:
+  - name: 'glusterfs-server'
+  - name: 'glusterfs-client'

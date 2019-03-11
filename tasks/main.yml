@@ -7,3 +7,20 @@
   tags:
     - 'role::glusterfs'
     - 'role::glusterfs::init'
+    - 'role::glusterfs::install'
+
+
+- name: 'INSTALL | Manage OS family installation tasks'
+  become: !!bool True
+  include_tasks: "{{ role_path }}/tasks/install_{{ ansible_os_family | lower }}.yml"
+  tags:
+    - 'role::glusterfs'
+    - 'role::glusterfs::install'
+
+
+- name: 'SERVICE | Manage service configuration'
+  become: !!bool True
+  include_tasks: "{{ role_path }}/tasks/manage_service.yml"
+  tags:
+    - 'role::glusterfs'
+    - 'role::glusterfs::install'

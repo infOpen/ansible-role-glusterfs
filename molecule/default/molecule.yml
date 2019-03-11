@@ -13,30 +13,18 @@ platforms:
     cap_add:
       - 'SYS_PTRACE'
     privileged: True
-  - name: "glusterfs-docker-jessie"
-    image: 'minimum2scp/systemd-jessie:latest'
-    command: '/sbin/init'
-    cap_add:
-      - 'SYS_PTRACE'
-    privileged: True
-  - name: "glusterfs-docker-stretch"
-    image: 'minimum2scp/systemd-stretch:latest'
-    command: '/sbin/init'
-    cap_add:
-      - 'SYS_PTRACE'
-    privileged: True
-  - name: "glusterfs-docker-xenial"
-    image: 'solita/ubuntu-systemd:16.04'
-    command: '/sbin/init'
-    cap_add:
-      - 'SYS_PTRACE'
-    privileged: True
+    groups:
+      - 'os_family_redhat'
+    volumes:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
   - name: "glusterfs-docker-bionic"
     image: 'solita/ubuntu-systemd:18.04'
     command: '/sbin/init'
     cap_add:
       - 'SYS_PTRACE'
     privileged: True
+    groups:
+      - 'os_family_debian'
 provisioner:
   name: 'ansible'
   lint:

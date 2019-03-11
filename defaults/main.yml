@@ -1,3 +1,10 @@
 ---
 
 # Defaults vars file for glusterfs role
+
+glusterfs_packages: "{{ _glusterfs_packages }}"
+glusterfs_repositories: "{{ _glusterfs_repositories }}"
+glusterfs_service:
+  name: 'glusterd'
+  state: 'started'
+  enabled: True

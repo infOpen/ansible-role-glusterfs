@@ -9,13 +9,13 @@ testinfra_hosts = AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 
-def test_hosts_file(host):
+@pytest.mark.parametrize('name', [
+    ('glusterfs-client'),
+    ('glusterfs-server'),
+])
+def test_packages(host):
     """
-    Ensure /etc/hosts file exists
+    Check installed package
     """
 
-    f = host.file('/etc/hosts')
-
-    assert f.exists
-    assert f.user == 'root'
-    assert f.group == 'root'
+    assert host.package(nam).is_installed

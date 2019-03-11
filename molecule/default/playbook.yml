@@ -2,8 +2,8 @@
 
 # Role tests
 
-- name: 'Converge | Prerequisites tasks'
-  hosts: 'all'
+- name: 'Converge | Debian family | Prerequisites tasks'
+  hosts: 'os_family_debian'
   gather_facts: False
   tasks:
     - name: 'PREREQUISITES | APT | Do an apt-get update'
@@ -13,6 +13,21 @@
     - name: 'PREREQUISITES | APT | Install python 2.7'
       become: True
       raw: 'apt-get install -qq python2.7'
+      changed_when: False
+    - name: 'PREREQUISITES | APT | Install net-tools, openssl and systemd'
+      become: True
+      raw: 'apt-get install -qq net-tools openssl systemd'
+      changed_when: False
+
+
+- name: 'Converge | RedHat family | Prerequisites tasks'
+  hosts: 'os_family_redhat'
+  roles:
+    - role: 'geerlingguy.repo-epel'
+  post_tasks:
+    - name: 'PREREQUISITES | YUM | Install net-tools and python 2.7'
+      become: True
+      raw: 'yum install -y openssl net-tools python2.7 python-pip'
       changed_when: False
 
 

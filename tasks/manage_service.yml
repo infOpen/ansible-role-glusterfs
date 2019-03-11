@@ -1,0 +1,7 @@
+---
+
+- name: 'INSTALL | Manage service'
+  service:
+    name: "{{ glusterfs_service.name }}"
+    state: "{{ glusterfs_service.state }}"
+    enabled: "{{ glusterfs_service.enabled }}"

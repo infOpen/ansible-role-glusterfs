@@ -1,0 +1,11 @@
+---
+
+_glusterfs_repositories:
+  - name: 'centos-release-gluster41'
+
+_glusterfs_packages:
+  - name: 'glusterfs'
+  - name: 'glusterfs-api'
+  - name: 'glusterfs-cli'
+  - name: 'glusterfs-libs'
+  - name: 'glusterfs-server'
